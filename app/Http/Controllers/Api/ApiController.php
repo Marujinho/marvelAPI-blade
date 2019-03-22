@@ -5,19 +5,32 @@ namespace App\Http\Controllers\Api;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
+use Domain\ApiAuth\ApiAuthRepository;
+
 
 class ApiController extends Controller
 {
+
+    protected $apiAuth;
+
+    /**
+    * Create a new controller instance.
+     * @param ApiAuthRepository $apiAuth
+    */
+
+    public function __construct(ApiAuthRepository $apiAuth)
+    {
+      dd('aqui');
+      $this->apiAuth = $apiAuth;
+    }
+
     public function index()
     {
-      $timestamp = now()->timestamp;
-      $pk = env('MARVEL_PVT_KEY');
-      $publicKey = env('MARVEL_PUBLIC_KEY');
-      $hash = md5($timestamp.$pk.$publicKey);
+
 
       $client = new \GuzzleHttp\Client();
 
-      $res = $client->request('GET', 'http://gateway.marvel.com/v1/public/characters/1011334?ts='.$timestamp.'&apikey=9c58a56196ee822a775d03f121b4ee6b&hash='.$hash);
+      // $res = $client->request('GET', 'http://gateway.marvel.com/v1/public/characters/1011334?ts='.$timestamp.'&apikey=9c58a56196ee822a775d03f121b4ee6b&hash='.$hash);
       // $promise = $client->sendAsync($res)->then(function ($response) {
       //     echo 'I completed! ' . $response->getBody();
       // });
@@ -29,9 +42,9 @@ class ApiController extends Controller
       // // "200"
       // echo $res->getHeader('content-type')[0];
       // 'application/json; charset=utf8'
-
-      $result = $res->getBody();
-      echo $result;exit;
+      dd('ss');
+      // $result = $res->getBody();
+      // echo $result;exit;
 
       // echo $result;
       return view('marvelAPI.index');
