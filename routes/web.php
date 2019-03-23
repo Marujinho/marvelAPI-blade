@@ -19,3 +19,9 @@ Route::get('api', [
         'uses' => 'Api\ApiController@index'
     ]
 )->name('api.index');
+
+
+Route::put('update-rank/{winnerId}/{loserId}', [
+        'uses' => 'Rank\RankController@update'
+    ]
+)->name('rank.updateRank');

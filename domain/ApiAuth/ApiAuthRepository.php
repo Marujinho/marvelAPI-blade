@@ -14,7 +14,7 @@ class ApiAuthRepository
     $hash = md5($timestamp.$pvtKey.$publicKey);
 
     return [
-        
+
       "timestamp" => $timestamp,
       "pvtKey"    => $pvtKey,
       "publicKey" => $publicKey,
