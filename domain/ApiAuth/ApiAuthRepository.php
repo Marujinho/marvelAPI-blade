@@ -8,13 +8,19 @@ class ApiAuthRepository
 
   public function marvelApiAuth()
   {
-    // $timestamp = now()->timestamp;
-    // $pk = env('MARVEL_PVT_KEY');
-    // $publicKey = env('MARVEL_PUBLIC_KEY');
-    // $hash = md5($timestamp.$pk.$publicKey);
+    $timestamp = now()->timestamp;
+    $pvtKey = env('MARVEL_PVT_KEY');
+    $publicKey = env('MARVEL_PUBLIC_KEY');
+    $hash = md5($timestamp.$pvtKey.$publicKey);
 
-    // return $hash;
-    dd('batata');
+    return [
+        
+      "timestamp" => $timestamp,
+      "pvtKey"    => $pvtKey,
+      "publicKey" => $publicKey,
+      "hash"      => $hash
+    ];
+
   }
 
 }
