@@ -31,26 +31,32 @@ class ApiController extends Controller
       $marvelAuth = $this->apiAuth->marvelApiAuth();
       $client = new \GuzzleHttp\Client();
 
-      //https://gateway.marvel.com:443/v1/public/series/15373/characters?orderBy=-name&limit=100&apikey=9c58a56196ee822a775d03f121b4ee6b avengers brabo
-      //https://gateway.marvel.com:443/v1/public/series/3613/characters?orderBy=-name&limit=100&apikey=9c58a56196ee822a775d03f121b4ee6b ANIHILATION
-      $url = 'http://gateway.marvel.com/v1/public/series/15373/characters?&limit=25&ts='.$marvelAuth['timestamp'].'&apikey='.$marvelAuth['publicKey'].'&hash='.$marvelAuth['hash'];
-      $request = $client->request('GET', $url);
+      $characterId = $this->character->chooseCharactersToCompare();
 
-      $marvelCharacters = collect(json_decode($request->getBody())->data->results);
+      //pega o primeiro personagem
+      $firstCharacterUrl = 'http://gateway.marvel.com/v1/public/characters/'.$characterId['first'].'?&limit=25&ts='.$marvelAuth['timestamp'].'&apikey='.$marvelAuth['publicKey'].'&hash='.$marvelAuth['hash'];
+      $request = $client->request('GET', $firstCharacterUrl);
+      $firstCharacter = collect(json_decode($request->getBody())->data->results)->first();
 
-      // $request = new \GuzzleHttp\Psr7\Request('GET', 'http://gateway.marvel.com/v1/public/characters?ts='.$marvelAuth['timestamp'].'&apikey='.$marvelAuth['publicKey'].'&hash='.$marvelAuth['hash']);
+      //pega o segundo personagem
+      $secondCharacterUrl = 'http://gateway.marvel.com/v1/public/characters/'.$characterId['second'].'?&limit=25&ts='.$marvelAuth['timestamp'].'&apikey='.$marvelAuth['publicKey'].'&hash='.$marvelAuth['hash'];
+      $request = $client->request('GET', $secondCharacterUrl);
+      $secondCharacter = collect(json_decode($request->getBody())->data->results)->first();
+
+      // $request = new \GuzzleHttp\Psr7\Request('GET', 'http://gateway.marvel.com/v1/public/characters/'.$characterId['first'].'?ts='.$marvelAuth['timestamp'].'&apikey='.$marvelAuth['publicKey'].'&hash='.$marvelAuth['hash']);
       // $promise = $client->sendAsync($request)->then(function ($response) {
           // echo $response->getBody();
       // });
       // $promise->wait();
 
+
       // echo $res->getStatusCode();
       // // "200"
       // echo $request->getHeader('content-type')[0];
       // 'application/json; charset=utf8'
-      $number = $this->character->getRandomNumbers();
-      $firstCharacter = $marvelCharacters[$number['firstNumber']];
-      $secondCharacter = $marvelCharacters[$number['secondNumber']];
+
+      // $firstCharacter = $marvelCharacters[$number['firstNumber']];
+      // $secondCharacter = $marvelCharacters[$number['secondNumber']];
 
       return view('marvelAPI.index', [
         'firstCharacter'   => $firstCharacter,

@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\DB;
 
 use PDO;
 use PDOException;
@@ -14,7 +15,7 @@ class createMarvelDatabase extends Command
      *
      * @var string
      */
-    protected $signature = 'db:marvel';
+    protected $signature = 'marvel:create';
 
     /**
      * The console command description.
@@ -28,10 +29,10 @@ class createMarvelDatabase extends Command
     //  *
     //  * @return void
     //  */
-    // public function __construct()
-    // {
-    //     parent::__construct();
-    // }
+    public function __construct()
+    {
+        parent::__construct();
+    }
 
     /**
      * Execute the console command.
@@ -42,25 +43,28 @@ class createMarvelDatabase extends Command
     {
       $database = env('DB_DATABASE', false);
 
-      if (! $database) {
-          $this->info('Skipping creation of database as env(DB_DATABASE) is empty');
+        if (! $database) {
+            $this->info('Ops... Parece que o campo DB_DATABASE no arquivo .env está vazio :/');
+            return;
+        }
+
+        $schemaName = env('DB_DATABASE') ?: config("database.connections.mysql.database");
+        $charset = config("database.connections.mysql.charset",'utf8mb4');
+        $collation = config("database.connections.mysql.collation",'utf8mb4_unicode_ci');
+
+        config(["database.connections.mysql.database" => null]);
+
+        $query = "CREATE DATABASE IF NOT EXISTS $schemaName CHARACTER SET $charset COLLATE $collation;";
+
+        $result = DB::statement($query);
+
+        if($result === false){
+          $this->info('Ops... Ocorreu um erro ao criar a base de dados :/');
           return;
-      }
+        }
 
-      try {
-          $pdo = $this->getPDOConnection(env('DB_HOST'), env('DB_PORT'), env('DB_USERNAME'), env('DB_PASSWORD'));
-
-          $pdo->exec(sprintf(
-              'CREATE DATABASE IF NOT EXISTS %s CHARACTER SET %s COLLATE %s;',
-              $database,
-              env('DB_CHARSET'),
-              env('DB_COLLATION')
-          ));
-
-          $this->info(sprintf('Successfully created %s database', $database));
-      } catch (PDOException $exception) {
-          $this->error(sprintf('Failed to create %s database, %s', $database, $exception->getMessage()));
-      }
+        config(["database.connections.mysql.database" => $schemaName]);
+        $this->info('Tabela foi criada com sucesso :)');
     }
 
 

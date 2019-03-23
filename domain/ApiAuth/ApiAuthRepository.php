@@ -20,7 +20,6 @@ class ApiAuthRepository
       "publicKey" => $publicKey,
       "hash"      => $hash
     ];
-
   }
 
 }
