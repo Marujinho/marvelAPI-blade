@@ -15,7 +15,7 @@ class createMarvelDatabase extends Command
      *
      * @var string
      */
-    protected $signature = 'marvel:create';
+    protected $signature = 'marvelmash:create';
 
     /**
      * The console command description.

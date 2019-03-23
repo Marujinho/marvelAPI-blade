@@ -15,7 +15,7 @@ class populateMarvelDatabase extends Command
      *
      * @var string
      */
-    protected $signature = 'marvel:prepare';
+    protected $signature = 'marvelmash:prepare';
 
     /**
      * The console command description.
