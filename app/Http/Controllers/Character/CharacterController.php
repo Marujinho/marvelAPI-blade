@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace App\Http\Controllers\Character;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -8,7 +8,7 @@ use App\Http\Controllers\Controller;
 use Domain\ApiAuth\ApiAuthRepository;
 use Domain\Characters\CharactersRepository;
 
-class ApiController extends Controller
+class CharacterController extends Controller
 {
 
     protected $apiAuth;
@@ -49,7 +49,6 @@ class ApiController extends Controller
       // });
       // $promise->wait();
 
-
       // echo $res->getStatusCode();
       // // "200"
       // echo $request->getHeader('content-type')[0];
@@ -58,9 +57,13 @@ class ApiController extends Controller
       // $firstCharacter = $marvelCharacters[$number['firstNumber']];
       // $secondCharacter = $marvelCharacters[$number['secondNumber']];
 
-      return view('marvelAPI.index', [
+      //Pega os personagens por ordem de rank
+      $rankedCharacters = $this->character->getCharacters()->sortByDesc('score')->take(5);
+
+      return view('Characters.index', [
         'firstCharacter'   => $firstCharacter,
-        'secondCharacter' => $secondCharacter
+        'secondCharacter' => $secondCharacter,
+        'rankedCharacters' => $rankedCharacters
       ]);
     }
 }

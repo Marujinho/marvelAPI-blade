@@ -12,6 +12,11 @@ class CharactersRepository
     $this->model = $character;
   }
 
+  public function getCharacters()
+  {
+    return $this->model->get();
+  }
+
   public function chooseCharactersToCompare()
   {
     //Seleciona numeros aleatórios para escolher do array dos ids dos personagens do banco
@@ -30,4 +35,10 @@ class CharactersRepository
       'second' => $marvelCharacters[$secondNumber]->character_id
     ];
   }
+
+  public function getCharacterById($character_id)
+  {
+    return $this->model->where('character_id', '=', $character_id)->first();
+  }
+
 }

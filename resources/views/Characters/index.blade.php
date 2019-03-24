@@ -14,23 +14,17 @@
     <div class="col-md-12 col-xs-12">
       <div class="text-center">
         <div class="col-md-6 col-xs-6">
-
-          {!! Form::open(['route' => ['rank.updateRank', $firstCharacter->id, $secondCharacter->id], 'method'=>'PUT']) !!}
-            <button type="submit">
+          <a href="{{route('rank.updateRank', ['win_id' => $firstCharacter->id, 'lose_id' => $secondCharacter->id])}}">
               <img class="img" src="{{$firstCharacter->thumbnail->path}}.{{$firstCharacter->thumbnail->extension}}">
-            </button>
-          {!! Form::close() !!}
+          </a>
           <div class="text-center">
             <h3>{{$firstCharacter->name}}</h3>
           </div>
         </div>
-
         <div class="col-md-6 col-xs-6">
-          {!! Form::open(['route' => ['rank.updateRank', $secondCharacter->id ,$firstCharacter->id], 'method'=>'PUT']) !!}
-            <button type="submit">
+            <a href="{{route('rank.updateRank', ['win_id' => $secondCharacter->id, 'lose_id' => $firstCharacter->id])}}">
               <img class="img" src="{{$secondCharacter->thumbnail->path}}.{{$secondCharacter->thumbnail->extension}}">
-            </button>
-          {!! Form::close() !!}
+            </a>
           <div class="text-center">
             <h3>{{$secondCharacter->name}}</h3>
           </div>
@@ -46,11 +40,9 @@
         </div>
       </div>
       <div class="well" style="display: flex; justify-content: space-between;">
-        <img style="width:100px; height:100px" src="{{$secondCharacter->thumbnail->path}}.{{$secondCharacter->thumbnail->extension}}">
-        <img style="width:100px; height:100px" src="{{$secondCharacter->thumbnail->path}}.{{$secondCharacter->thumbnail->extension}}">
-        <img style="width:100px; height:100px" src="{{$secondCharacter->thumbnail->path}}.{{$secondCharacter->thumbnail->extension}}">
-        <img style="width:100px; height:100px" src="{{$secondCharacter->thumbnail->path}}.{{$secondCharacter->thumbnail->extension}}">
-        <img style="width:100px; height:100px" src="{{$secondCharacter->thumbnail->path}}.{{$secondCharacter->thumbnail->extension}}">
+        @foreach($rankedCharacters as $rankedCharacter)
+          <img style="width:100px; height:100px" src="{{$rankedCharacter->thumb}}">
+        @endforeach
       </div>
     </div>
   </div>

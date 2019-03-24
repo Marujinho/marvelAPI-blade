@@ -17,6 +17,7 @@ class CreateCharactersTable extends Migration
             $table->increments('id');
             $table->string('character_id');
             $table->integer('score');
+            $table->string('thumb');
             $table->timestamps();
         });
     }

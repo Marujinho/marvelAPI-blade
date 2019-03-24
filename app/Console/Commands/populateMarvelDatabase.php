@@ -59,7 +59,7 @@ class populateMarvelDatabase extends Command
         return;
       }
 
-      $this->info(sprintf('Aguarde, estamos preparando a aplicação...'));
+      $this->info(sprintf('Aguarde, a aplicação está sendo preparada...'));
 
       //popula o banco com os ids e scores necessarios para funcionar as comparações e ranking dos personagens
       $marvelAuth = $this->apiAuth->marvelApiAuth();
@@ -73,6 +73,7 @@ class populateMarvelDatabase extends Command
           $char = new Character;
           $char->character_id = $marvelCharacter->id;
           $char->score = 1500;
+          $char->thumb = $marvelCharacter->thumbnail->path.'.'.$marvelCharacter->thumbnail->extension;
           $char->save();
       });
 
