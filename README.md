@@ -1,6 +1,6 @@
 # MARVELMASH
 
-Uma aplicação utilizando a api da marvel () com laravel 5.5. Utilizando a framework de front-end Blade. PHP ^7
+Uma aplicação utilizando a api da marvel (https://developer.marvel.com) com laravel 5.5. Utilizando a framework de front-end Blade. PHP ^7
 
 
 # O que é?
