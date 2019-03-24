@@ -16,12 +16,11 @@
 <div class="container">
   <div class="jumbotron" style="margin-top:15px">
     <h1 class="text-center">MARVELMASH</h1>
-    <p>Bootstrap is the most popular HTML, CSS, and JS framework for developing
-    responsive, mobile-first projects on the web.</p>
+    <p>São apresentados dois personagens da marvel e você decide quem venceria num duelo. Nao vale pular!</p>
   </div>
   <div class="text-center">
-    <a href="{{ route('api.index') }}">
-      <button class="btn btn-default">Começar</button>
+    <a href="{{ route('characters.index') }}">
+      <button class="btn btn-default btn-lg">Começar</button>
     </a>
   </div>
 </div>
