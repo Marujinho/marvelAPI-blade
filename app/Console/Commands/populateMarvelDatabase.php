@@ -50,7 +50,7 @@ class populateMarvelDatabase extends Command
       try {
         $checkDatabase = $this->model->get();
       } catch (\Exception $e) {
-        $this->info(sprintf('Ops... não consegui encontrar a tabela, verifique se executou todos comandos para preparar a aplicação!'));
+        $this->info(sprintf('Ops... ocorreu um erro, verifique se executou todos comandos para preparar a aplicação!'));
         return;
       }
 
