@@ -1,7 +1,7 @@
 # MARVELMASH
 
-Uma aplicação utilizando a api da marvel (https://developer.marvel.com) com laravel 5.5. Utilizando a framework de front-end Blade. PHP ^7
-Utilizando o Rating ELO. https://pt.wikipedia.org/wiki/Rating_ELO.
+Uma aplicação utilizando a api da marvel (https://developer.marvel.com) com laravel 5.5. Utilizando a framework de front-end Blade. PHP ^7.
+Utilizando para fazer o rank a equação do Rating ELO. https://pt.wikipedia.org/wiki/Rating_ELO.
 
 
 # O que é?
