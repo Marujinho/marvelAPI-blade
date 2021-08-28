@@ -4,32 +4,39 @@ Uma aplicação utilizando a api da marvel (https://developer.marvel.com) com la
 Utilizando para fazer o rank a equação do Rating ELO. https://pt.wikipedia.org/wiki/Rating_ELO.
 
 
-# O que é?
-São apresentados dois personagens e você decide quem venceria num duelo entre os dois.
-No rodapé da pagina estará o rank entre os personagens que você julgou serem mais fortes
+# What is it?
+It will be presented two Marvel characters and you decide who would win if they fought. <br />
+In The footer of the screen will display the rank according to your votes using the application algorithm
 
 
-# Como Preparar o ambiente:
+# Installing:
 
-Para preparar o ambiente para receber rodar a aplicação, são necessários os seguintes passos:
+To prepare the envirioment is necessary the following commands in your local machine:
 
-1 - Depois de baixar o projeto no seu computador rode o composer Install.
+**git clone https://github.com/Marujinho/marvelAPI-blade.git** 
+(That will clone the repository)
 
+**cd marvelAPI-blade**
+(Enter the repository folder)
 
-2 - Configure o .env para acessar o banco de dados de acordo com seu usuario e senha. 
+**composer install**
+(will download the dependencies)
 
+Configure your **.env** file with your local database credentials 
 
-3 - Dentro da pasta raíz do projeto, rode o seguinte comando no terminal:  php artisan marvelmash:create.
-Este comando criará uma tabela no banco para você.
-
-
-4 - Agora rode o comando: php artisan migrate.
-Este comando criará a tabela no banco que armazenará a pontuação dos personagens.
-
-
-5 - Por ultimo, rode o comando: php artisan marvelmash:prepare
-Este comando seleciona alguns personagens da marvel e os relaciona com as pontuações para ser feito o ranking durante as comparações.
+**php artisan marvelmash:create**
+(This command will create a table in database if you configured your .env file correctly)
 
 
-Pronto, agora só servir a aplicação e utilizar!
+**php artisan migrate**
+(This will created table in database which will store the characters' score)
+
+
+**php artisan marvelmash:prepare**
+(This command will select some Marvel characters, and prepares them for the ranking during the comparisons)
+
+**php artisan serve**
+Serves the application
+
+
 
