@@ -5,11 +5,6 @@ Application using **Marvel's api** (https://developer.marvel.com) with Laravel 5
 Algorithm used for the ranking is **Rating ELO** (https://pt.wikipedia.org/wiki/Rating_ELO)
 
 
-# What is it?
-It will be presented two Marvel characters and you decide who would win if they fought. <br />
-In The footer of the screen will display the rank according to your votes using the application algorithm
-
-
 # Installing:
 
 To prepare the envirioment is necessary the following commands in your local machine:
