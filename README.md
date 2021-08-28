@@ -13,13 +13,13 @@ In The footer of the screen will display the rank according to your votes using 
 
 To prepare the envirioment is necessary the following commands in your local machine:
 
-**git clone https://github.com/Marujinho/marvelAPI-blade.git** 
+* **git clone https://github.com/Marujinho/marvelAPI-blade.git** 
 (That will clone the repository)
 
-**cd marvelAPI-blade**
+* **cd marvelAPI-blade**
 (Enter the repository folder)
 
-**composer install**
+* **composer install**
 (will download the dependencies)
 
 Configure your **.env** file with your local database credentials 
