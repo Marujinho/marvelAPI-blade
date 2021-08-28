@@ -5,7 +5,7 @@
   <div class="row">
     <div class="col-md-12 col-xs-12">
       <div class="well" style="margin-top:15px">
-        <h1 class="text-center">Quem venceria?</h1>
+        <h1 class="text-center">Who would win in a battle?</h1>
       </div>
     </div>
   </div>
