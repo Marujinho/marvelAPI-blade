@@ -1,7 +1,7 @@
 # MARVELMASH
 
-It's a game where you vote who would win in a battle given two Marvel characters per round, and a rank get built while you play it.
-Application using **Marvel's api** (https://developer.marvel.com) with Laravel 5.5 at the time it was built and php ^7.
+It's a game where you vote who would win in a battle given two Marvel characters per round, and a rank get built while you play it. <br />
+Application using **Marvel's api** (https://developer.marvel.com) with Laravel 5.5 at the time it was built and php ^7. <br />
 Algorithm used for the ranking is **Rating ELO** (https://pt.wikipedia.org/wiki/Rating_ELO)
 
 
