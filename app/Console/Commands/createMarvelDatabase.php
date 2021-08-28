@@ -44,7 +44,7 @@ class createMarvelDatabase extends Command
       $database = env('DB_DATABASE', false);
 
         if (! $database) {
-            $this->info('Ops... Parece que o campo DB_DATABASE no arquivo .env está vazio :/');
+            $this->info('Ops... It seems like DB_DATABASE on .env file  is empty :/');
             return;
         }
 
@@ -59,12 +59,12 @@ class createMarvelDatabase extends Command
         $result = DB::statement($query);
 
         if($result === false){
-          $this->info('Ops... Ocorreu um erro ao criar a base de dados :/');
+          $this->info('Ops... An error occurred while creating database :/');
           return;
         }
 
         config(["database.connections.mysql.database" => $schemaName]);
-        $this->info('Tabela foi criada com sucesso :)');
+        $this->info('Table created successfully :)');
     }
 
 

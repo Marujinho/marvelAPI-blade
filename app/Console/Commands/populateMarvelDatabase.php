@@ -21,8 +21,8 @@ class populateMarvelDatabase extends Command
      * The console command description.
      *
      * @var string
-     */
-    protected $description = 'Este comando pegará apenas os ids dos personagens da marvel para fazer as pontuações';
+     */                       
+    protected $description = "This command will only get marvel characters' ids to create the score system";
 
     protected $apiAuth;
     protected $character;
@@ -50,16 +50,16 @@ class populateMarvelDatabase extends Command
       try {
         $checkDatabase = $this->model->get();
       } catch (\Exception $e) {
-        $this->info(sprintf('Ops... ocorreu um erro, verifique se executou todos comandos para preparar a aplicação!'));
+        $this->info(sprintf("Ops... An error occurred, please chack if you've executed all necessary prior commands! for the application to run"));
         return;
       }
 
       if(!$checkDatabase->isEmpty()){
-        $this->info(sprintf('Este comando não é mais necessário. A aplicação ja foi preparada ;)'));
+        $this->info(sprintf('This command is no longer necessary. The application has already been prepared ;)'));
         return;
       }
 
-      $this->info(sprintf('Aguarde, a aplicação está sendo preparada...'));
+      $this->info(sprintf('Hold on a little bit... The application is being installed'));
 
       //popula o banco com os ids e scores necessarios para funcionar as comparações e ranking dos personagens
       $marvelAuth = $this->apiAuth->marvelApiAuth();
@@ -77,6 +77,6 @@ class populateMarvelDatabase extends Command
           $char->save();
       });
 
-      $this->info(sprintf('Aplicação está pronta para usar :)'));
+      $this->info(sprintf('OK!! Application is ready to be served :)'));
     }
 }
