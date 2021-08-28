@@ -1,7 +1,7 @@
 # MARVELMASH
 
-Uma aplicação utilizando a api da marvel (https://developer.marvel.com) com laravel 5.5. Utilizando a framework de front-end Blade. PHP ^7.
-Utilizando para fazer o rank a equação do Rating ELO. https://pt.wikipedia.org/wiki/Rating_ELO.
+Application using **Marvel's api** (https://developer.marvel.com) with Laravel 5.5 at the time it was built and php ^7.
+Algorithm used for the ranking is **Rating ELO** (https://pt.wikipedia.org/wiki/Rating_ELO)
 
 
 # What is it?
@@ -22,20 +22,20 @@ To prepare the envirioment is necessary the following commands in your local mac
 * **composer install**
 (will download the dependencies)
 
-Configure your **.env** file with your local database credentials 
+* Configure your **.env** file with your local database credentials 
 
-**php artisan marvelmash:create**
+* **php artisan marvelmash:create**
 (This command will create a table in database if you configured your .env file correctly)
 
 
-**php artisan migrate**
+* **php artisan migrate**
 (This will created table in database which will store the characters' score)
 
 
-**php artisan marvelmash:prepare**
+* **php artisan marvelmash:prepare**
 (This command will select some Marvel characters, and prepares them for the ranking during the comparisons)
 
-**php artisan serve**
+* **php artisan serve**
 Serves the application
 
 
